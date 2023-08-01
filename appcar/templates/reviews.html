@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Reviews{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css'%}">
+</head>
+<body>
+    <div class="container">
+        {% block content %}
+        <div class="success">
+            <div class="block-11">
+                <h1>Our reviews</h1>
+            </div>
+            <div class="block-14">  
+                {% for user_review in user_reviews %}             
+                <div v-for="user_review in user_reviews" class="review_content">
+                    <h4>{{ user_review.user}}</h4>
+                    <p class="mark">{{ user_review.average_mark}}</p>                                     
+                    <p>{{ user_review.text }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+</body>
+</html>

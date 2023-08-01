@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Price{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css'%}">
+</head>
+<body>
+    <div class="container">
+        {% block content %}
+        <div class="form_calc">
+        <form method="POST" action="{% url 'calc' car.id %}">
+            {% csrf_token %}
+            <input type="number" name="days" placeholder="Enter the number of days" required>
+            <button type="submit" class="button">Calculate</button>
+        </form>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="result_calc">{{message}}</div>
+            {%endfor%}
+        {% endif %}                
+        </div>
+        <br> <br> <br>
+        
+        {% endblock %}
+    </div>
+</body>
+</html>

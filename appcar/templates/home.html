@@ -1,0 +1,57 @@
+
+
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Rentacar{% endblock %}</title>
+    
+    
+    <link rel="stylesheet" href="{% static 'styles/styles.css'%}">
+</head>
+<body>
+    <div class="container">
+        
+        {% block content %}        
+        <div class="content">
+            <div class="block-11">
+                <h1>Our Cars</h1>
+            </div>
+            <div class="block-14">
+                {% for car in cars %}
+                <div v-for="car in cars" class="blog">
+                    <a href="{% url 'description' car.id %}"><img src="{{car.image.url}}" alt="car" style="width: 100%;"></a>
+                    <div class="blog_content">
+                        <a href="{% url 'description' car.id %}">{{ car.title }}</a>
+                        <p class="price">
+                            {{car.price_day}} CZK / day
+                        </p>
+                        <p>
+                            From 1 week - {{car.price_week}} CZK / day <br> 1 month - {{car.price_month}} CZK / day
+                        </p>
+                        <a href="{% url 'calculator' car.id %}" class="button-1">Calculate price</a>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+            <div class="reviewsbuttons">                                   
+                <a href="{% url 'reviews'%}" class="button">Reviews</a>                
+                {% if user.is_authenticated %}
+                    <a href="{% url 'makereview' %}" class="button-1">Make a review</a>
+                {% endif %}                
+            </div>
+            
+        </div>
+        {% endblock %}          
+        
+    </div>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,38 @@
+
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ car.title }}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css'%}">
+</head>
+<body>
+    <div class="container">
+        {% block content %}
+        <div class="description">        
+            <div class="col-1">
+                <img class="car_img" src="{{car.image.url}}" alt="car">
+            </div>
+            <div class="col-1">
+                <h2>{{ car.title }}</h2>
+                <br>
+                <p>
+                    {{ car.description }} 
+                </p>
+                <ul class="sipka">
+                    <li>{{car.price_day}} CZK / day</li>
+                    <li>From 1 week - {{car.price_week}} CZK / day</li>
+                    <li>1 month - {{car.price_month}} CZK / day</li>                    
+                </ul>
+                <br>
+                <a href="{% url 'calculator' car.id %}" class="button">Calculate price</a>
+            </div>                   
+        </div>
+        
+        {% endblock %}
+    </div>
+</body>
+</html>

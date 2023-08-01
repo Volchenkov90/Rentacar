@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Default Title{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css'%}">
+</head>
+<body>
+    <header class="header">
+        <div>
+            <a href="{% url 'home' %}">Rent a <br> <span>CAR</span></a>
+        </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'contacts' %}">Contacts</a></li>                    
+                    <li><a href="{% url 'admin:index' %}" target="_blank">Admin</a></li>
+                    <li><a href="{% url 'reviews'%}">Reviews</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'logoutaccount' %}">Logout ({{ user.username }})</a></li>
+                    {% else %}
+                    <li><a href="{% url 'loginaccount' %}">Login</a></li>
+                    <li><a href="{% url 'signupaccount' %}">Sign Up</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        <a href="{% url 'home' %}"><img src="{% static 'img/avtomob.png'%}" alt="icon auto" style="width: 50%;"></a>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="footer">                       
+        
+        <div class="col-4">
+            <div class="question_box">
+                <h3>Any questions?</h3>
+                <h5>We will get in touch with you!</h5>
+                <div class="form_question">
+                    <form method="POST" action="{% url 'question'%}">
+                        {% csrf_token %}
+                        <input type="text" name="username" placeholder="Enter your name" required> <br>
+                        <input type="tel" name="phone" placeholder="Enter your phone number" required> <br>
+                        <input type="text" name="question" placeholder="Enter your question" required> <br>
+                        <button type="submit" class="button-3">Send</button>
+                    </form>             
+                            
+                </div>
+            </div>
+                
+        </div>
+        <div class="col-4">
+            <h3>S.R.O "Rentacar"</h3>
+            <br>
+            
+            <p>Tlumačovská 2766/26a, Praha 13, ČR <br>
+                    IČO: 12345678 <br>
+                    DIČ: CZ12345678</p>            
+        </div>
+        
+    </footer>
+</body>
+</html>
+
+

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Contacts{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css'%}">
+</head>
+<body>
+    <div class="container">
+        {% block content %}
+        <div class="block-11">
+            <h1>Contacts</h1>
+        </div>
+        <div class="contacts">
+            <p style="text-align: justify;">
+                We are a growing team, in our first year in the car rental market, 
+                but we have already won the sympathy of our customers. 
+                If you are looking for an affordable and reliable rental car for travel or work, 
+                contact us! We will help you find a vehicle that meets all your requirements and preferences.
+            </p>
+            <ul>
+                <li>Tlumačovská 2766/26a 15500 Praha 13</li>
+                <li><a href="tel:+420607798368">+420607798368</a></li>
+                <li><a href="mailto:Rentacar@rentacar.com">Rentacar@rentacar.com</a></li>
+            </ul>
+        </div>
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Making a review{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css'%}">
+</head>
+<body>
+    <div class="container">
+        {% block content %}
+        <div class="formreview">
+            <form method="post" action="{% url 'newreview' %}">
+                {% csrf_token %}
+                <p>Please rate the condition of the car:</p>
+                <div>
+                    <input type="radio" id="condChoice1" name="condition" value="1" required>
+                    <label for="condChoice1">1</label>
+                    <input type="radio" id="condChoice2" name="condition" value="2" required>
+                    <label for="condChoice2">2</label>
+                    <input type="radio" id="condChoice3" name="condition" value="3" required>
+                    <label for="condChoice3">3</label>
+                    <input type="radio" id="condChoice4" name="condition" value="4" required>
+                    <label for="condChoice4">4</label>
+                    <input type="radio" id="condChoice5" name="condition" value="5" required>
+                    <label for="condChoice5">5</label>
+                </div>
+            
+                <p>Please rate the work of our staff:</p>
+                <div>
+                    <input type="radio" id="staffChoice1" name="staff" value="1" required>
+                    <label for="staffChoice1">1</label>
+                    <input type="radio" id="staffChoice2" name="staff" value="2" required>
+                    <label for="staffChoice2">2</label>
+                    <input type="radio" id="staffChoice3" name="staff" value="3" required>
+                    <label for="staffChoice3">3</label>
+                    <input type="radio" id="staffChoice4" name="staff" value="4" required>
+                    <label for="staffChoice4">4</label>
+                    <input type="radio" id="staffChoice5" name="staff" value="5" required>
+                    <label for="staffChoice5">5</label>
+                </div>
+            
+                <p>Please rate the cost of the services:</p>
+                <div>
+                    <input type="radio" id="costChoice1" name="cost" value="1" required>
+                    <label for="costChoice1">1</label>
+                    <input type="radio" id="costChoice2" name="cost" value="2" required>
+                    <label for="costChoice2">2</label>
+                    <input type="radio" id="costChoice3" name="cost" value="3" required>
+                    <label for="costChoice3">3</label>
+                    <input type="radio" id="costChoice4" name="cost" value="4" required>
+                    <label for="costChoice4">4</label>
+                    <input type="radio" id="costChoice5" name="cost" value="5" required>
+                    <label for="costChoice5">5</label>
+                </div>
+            
+                <p>Please rate the garage location</p>
+                <div>
+                    <input type="radio" id="locationChoice1" name="location" value="1" required>
+                    <label for="locationChoice1">1</label>
+                    <input type="radio" id="locationChoice2" name="location" value="2" required>
+                    <label for="locationChoice2">2</label>
+                    <input type="radio" id="locationChoice3" name="location" value="3" required>
+                    <label for="locationChoice3">3</label>
+                    <input type="radio" id="locationChoice4" name="location" value="4" required>
+                    <label for="locationChoice4">4</label>
+                    <input type="radio" id="locationChoice5" name="location" value="5" required>
+                    <label for="locationChoice5">5</label>
+                </div>
+            
+                <div class="somewords">
+                    <input type="text" name="somewords" placeholder="Please write a comment">
+                </div>
+                <button type="submit" class="button">Leave a review</button>                
+            </form>
+        </div>
+        {% endblock %}
+    </div>
+</body>
+</html>
